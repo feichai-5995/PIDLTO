@@ -1,0 +1,191 @@
+file:
+    # model_name: 'mbb40_20_8cm'
+    # model_name: 'Lmbb200_100_50_asymmetrical'
+    # model_name: 'caked200_d100_h100_h50'
+    # model_name: 'hamburger'
+
+    model_name: 'The_leaning_tower_of_Pisa_z_100'
+    # model_name: 'Weighing_module_z_50'
+    # model_name: 'car_z_50'
+    # model_name: 'lib_a_marble_bust_of_a_mouse_z_50'
+    # model_name: 'lib_a_mug_of_hot_chocolate_with_whipped_cream_and_marshmallows_z_60'
+
+
+epoch_and_lr:
+    disp_init_epoch: 1500
+    disp_train_epoch: 20
+    dens_train_epoch: 600
+    disp_init_lr: 0.00001
+    disp_train_lr: 0.000002
+    dens_lr: 0.003
+
+
+    
+stl_to_voxel:
+    print_message: True
+    voxel_base_stl_z: True
+    # MBB
+    # voxel_z_size: 12
+    # LMBB
+    # voxel_z_size: 10
+    # cake
+    # voxel_z_size: 40
+    # hamburger
+    # voxel_z_size: 30
+    
+    # pisa
+    voxel_z_size: 80
+    # wm
+    # voxel_z_size: 30
+    # car
+    # voxel_z_size: 25
+    # mouse
+    # voxel_z_size: 50
+    # chocolate
+    # voxel_z_size: 50
+
+    voxel_xyz_size: [20,20,20]
+    ray: "xyz"
+    parallel: True
+
+voxel_writer:
+    filepath: "./output/hamburger.inp"
+    type: 12
+
+FEA:
+    keep_shell: False
+    nelz: ${stl_to_voxel.voxel_z_size}
+    # load_posi_ratio: [1,0,0.5] # MBB
+    # load_posi_ratio_predict: [1,0,0.5] # MBB
+    # load_posi_ratio: [0,0.5,0.5] # LMBB
+    # load_posi_ratio_predict: [0,0.5,0.5] # LMBB
+    # load_posi_ratio: [1,0.5,0.5] # cake
+    # load_posi_ratio_predict: [1,0.5,0.5] # cake
+    # load_posi_ratio: [0.35,0.9,0.4] # hamburger
+    # load_posi_ratio_predict: [0.33,0.9,0.42] # hamburger
+
+    # load_posi_ratio: [0.28,0.46,1.0] # pisa load x
+    # load_posi_ratio_predict: [0.28,0.46,1.0] # pisa load x
+    load_posi_ratio: [0.27,0.46,1.0] # pisa load z
+    load_posi_ratio_predict: [0.27,0.46,1.0] # pisa load z
+    # load_posi_ratio: [1.0,0.48,0.32] # wm
+    # load_posi_ratio_predict: [1.0,0.48,0.32] # wm
+    # load_posi_ratio: [0.44,0.47,1.0] # car
+    # load_posi_ratio_predict: [0.44,0.47,1.0] # car
+    # load_posi_ratio: [0,0.38,0.54] # mouse
+    # load_posi_ratio_predict: [0,0.38,0.54] # mouse
+    # load_posi_ratio: [0.52,0.42,1.0] # chocolate load y
+    # load_posi_ratio_predict: [0.52,0.42,1.0] # chocolate load y
+    # load_posi_ratio: [0.52,0.43,1.0] # chocolate load z
+    # load_posi_ratio_predict: [0.52,0.43,1.0] # chocolate load z
+
+    # load_dire: [[0],[0.1],[0]] # MBB
+    # load_dire: [[0],[-0.1],[0]] # LMBB
+    # load_dire: [[0],[-0.1],[0]] # cake
+    # load_dire: [[0],[0],[-0.1]] # hamburger
+
+    # load_dire: [[-0.1],[0],[0]] # pisa load x
+    load_dire: [[0],[0],[-0.1]] # pisa load z
+    # load_dire: [[-0.1],[0],[0]] # wm
+    # load_dire: [[0],[0],[-0.1]] # car
+    # load_dire: [[-0.1],[0],[0]] # mouse
+    # load_dire: [[0],[0.1],[0]] # chocolate load y
+    # load_dire: [[0],[0],[-0.1]] # chocolate load z
+    
+    fix_face_bool: False
+    # fixed_face: 'z'
+    # fixed_face: 'x'
+    fixed_face: 'y'
+    fixed_layyer_ratio: 1 
+
+    # MBB
+    # fixed_voxel_orientation: [1,1,1]
+    # fixed_voxel_start: [0,0,0]
+    # fixed_voxel_num: [1,30,12] 
+    # fixed_voxel_start_predict: [0,0,0]
+    # fixed_voxel_num_predict: [1,60,24] 
+
+    # LMBB
+    # fixed_voxel_orientation: [1,-1,1]
+    # fixed_voxel_start: [0.5,1,0]
+    # fixed_voxel_num: [20,1,10] 
+    # fixed_voxel_start_predict: [0.5,1,0]
+    # fixed_voxel_num_predict: [40,1,20]
+
+    # cake
+    # fixed_voxel_orientation: [1,-1,1]
+    # fixed_voxel_start: [0.25,1,0.375]
+    # fixed_voxel_num: [10,1,10]
+    # fixed_voxel_start_predict: [0.25,1,0.375]
+    # fixed_voxel_num_predict: [20,1,20]
+
+    # hamburger
+    # fixed_voxel_orientation: [1,1,-1]
+    # fixed_voxel_start: [0.4,0.4,1.0]
+    # fixed_voxel_num: [8,8,1]
+    # fixed_voxel_start_predict: [0.43,0.42,1.0]
+    # fixed_voxel_num_predict: [11,11,1]
+
+
+    # pisa
+    fixed_voxel_orientation: [1,1,1]
+    fixed_voxel_start: [0.19,0.51,0]
+    fixed_voxel_num: [9,16,2]
+    fixed_voxel_start_predict: [0.19,0.51,0]
+    fixed_voxel_num_predict: [18,32,4]
+
+    # wm
+    # fixed_voxel_orientation: [1,1,-1]
+    # fixed_voxel_start: [0.39,0.43,1]
+    # fixed_voxel_num: [8,5,1]
+    # fixed_voxel_start_predict: [0.39,0.43,1]
+    # fixed_voxel_num_predict: [16,10,2]
+
+    # car
+    # fixed_voxel_orientation: [1,1,1]
+    # fixed_voxel_start: [0.18,0.05,0]
+    # fixed_voxel_num: [48,38,2]
+    # fixed_voxel_start_predict: [0.18,0.05,0]
+    # fixed_voxel_num_predict: [96,76,2]
+    
+    # mouse
+    # fixed_voxel_orientation: [1,1,1]
+    # fixed_voxel_start: [0.69,0.40,0.02]
+    # fixed_voxel_num: [9,5,1]
+    # fixed_voxel_start_predict: [0.69,0.40,0.02]
+    # fixed_voxel_num_predict: [18,10,2]
+
+    # chocolate
+    # fixed_voxel_orientation: [1,1,1]
+    # fixed_voxel_start: [0.57,0.35,0]
+    # fixed_voxel_num: [9,13,1]
+    # fixed_voxel_start_predict: [0.57,0.35,0]
+    # fixed_voxel_num_predict: [18,26,2]
+
+    # outside_point_ratio: 0.1
+
+    # vf: 0.3 # MBB
+    # vf: 0.2 # LMBB
+    # vf: 0.1 # cake
+    # vf: 0.05 # hamburger
+    
+    # vf: 0.2 # pisa load x
+    vf: 0.1 # pisa load z
+    # vf: 0.075 # wm
+    # vf: 0.15 # car
+    # vf: 0.1 # mouse
+    # vf: 0.05 # chocolate load z
+    # vf: 0.1 # chocolate load y
+
+    penal: 3.0
+    E0: 1000
+    nu: 0.3
+
+    alpha_init: 1
+    alpha_max: 50
+    alpha_delta: 0.1
+
+    # batch_size: 8000
+    batch_size_mul: 1.5
+    disp_fix_w_in: 10000.0
+    disp_fix_w_smooth: 1.0
